@@ -1,0 +1,25 @@
+.circular {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+}
+.aboutstuff {
+    border: 0 solid #000;
+    height: 200px;
+    margin: 25px auto;
+    padding: 5px;
+    width: 50%;
+}
+#david{
+	background: url(aboutdavid.jpg) no-repeat;
+}
+
+#hannan{
+	background: url(abouthannan.jpg) no-repeat;
+}
+
+#hugo{
+	background: url(abouthugo.jpg) no-repeat;
+}

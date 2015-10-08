@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post</title>
+    <script src="http://fb.me/react-0.12.0.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/jsx">
+
+  /*var ImgPost = React.createClass({
+    render: function(){
+      return (
+        <div className="imgPost">
+          <img src = "get_image.php" >
+        </div>
+        );
+    }
+  });*/
+
+
+
+  var Upvote = React.createClass({
+    render: function() {
+      return (
+        <div className="upvote">
+          <button type="button">Upvote</button>
+        </div>
+        );
+    }
+  });
+
+  var Downvote = React.createClass({
+    render: function() {
+      return(
+        <div className="downvote">
+          <button type="button">Downvote</button>
+        </div>
+        );
+    }
+  });
+
+  var Post = React.createClass({
+    render: function(){
+        return(
+         <div className="post">
+          <Upvote />
+          <Downvote />
+        </div>
+        );
+      }
+    });
+
+  React.render(<Post/>, document.getElementById('content'));
+
+    </script>
+  </body>
+</html>

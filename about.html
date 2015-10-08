@@ -1,0 +1,153 @@
+<html>
+<head>
+	<title>About</title>
+	<link href="default.css" rel="stylesheet"/>
+	<link href="about.css" rel="stylesheet"/>
+	<link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+	<!-- HEADER -->
+	<div class="header-container">
+		<header>
+			<div id='cssmenu'>
+				<ul>
+				   <li class='first'><a href='../index.html'><span>Home</span></a></li>
+				   <li><a href = "javascript:void(0)" onclick = "activateCamera();document.getElementById('light-capture').style.display='block';document.getElementById('fade').style.display='block'"><span>Capture</span></a></li>
+				   <li><a href= "javascript:void(0)" onclick = "document.getElementById('light-uploads').style.display='block';document.getElementById('fade-uploads').style.display='block'"><span>Uploads</span></a></li>
+				   <li class='active'><a href='about.html'><span>About</span></a></li>
+				</ul>
+			</div>
+		</header>
+	</div>
+
+	<!-- BANNER -->
+	<div class="about-container">
+		<div class="aboutstuff">
+			<h2 class="names">David Blader</h2>
+			<p class="aboutus">After working as a Swamp Guardian for the past 1729 years, David Blader decided to give Computer Science at McGill University a shot. David is currently majoring in Software Engineering with a minor in Psychology. David was elected Group Leader for this project by the Will of The People (Hannan). He was in charge of writing the React and PHP scripts as well as database creation and management.</p>
+			<div class="circular" id="david"></div>
+		</div>
+		<div class="aboutstuff">
+			<h2 class="names">Hugo Barnaby</h2>
+			<p class="aboutus">I feel like something cool should be said here about whatever each of us has worked on. Like CSS/HTML, and Javascripting all the things, and then a little spice with some PHP, and a little bit of this and a little bit of react.</p>
+			<div class="circular" id="hugo"></div>
+		</div>
+		<div class="aboutstuff">
+			<h2 class="names">Hannan Syed</h2>
+			<p class="aboutus">I feel like something cool should be said here about whatever each of us has worked on. Like CSS/HTML, and Javascripting all the things, and then a little spice with some PHP, and a little bit of this and a little bit of react.</p>
+			<div class="circular" id="hannan"></div>
+		</div>
+	</div>
+
+	
+
+	<!-- CONTENT -->
+	<!-- <div class="content-container">
+		<div class="content"></div>
+	</div> -->
+
+	<!-- FOOTER -->
+	<div class="footer-about"><p class="footer-text">Copyright (c) 2014</div>
+
+	<!-- POPUPFADE ** CAPTURE -->
+		
+		<!-- POPUPFADE ** WHITESPACE -->
+	<div id="light-capture" class="white_content">
+		<video id="video" width="400" height="300" autoplay src="blob:http%3A//davidwalsh.name/2bb4ab3d-5243-41a5-89b7-20d08f3fd9b4"></video>
+		<canvas id="canvas" width="400" height="300"></canvas>
+		<div class="snapphoto">
+			<button id="snap" class="sexyButton">Snap Photo</button>
+		</div>
+	</div>
+		<!-- POPUPFADE ** FADEDBLACKSPACE -->
+	<a href = "javascript:void(0)" onclick = "document.getElementById('light-capture').style.display='none';document.getElementById('fade').style.display='none'"><div id="fade" class="black_overlay"></div></a>
+
+
+	<!-- POPUPFADE ** UPLOAD -->
+
+		<!-- POPUPFADE ** WHITESPACE -->
+	<div id="light-uploads" class="white_content_uploads">
+    <form name="" method="post" action="#" class="feedback-form-1">
+        
+            <div class="input-file-row-1">
+	            <div class="uploadphoto">
+	                <div class="upload-file-container">
+	                    <img id="preview_image" src="#" alt="" />
+	                    <div class="upload-file-container-text">
+	                        <div class = 'one_opacity_0'>
+	                            <input type="file" label = "add" name="fileToUpload" id="fileToUpload"/>
+	                        </div>
+	                        <span> Add Photo </span>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        
+        <div class="uploadphoto">
+            <button type="submit" name="submit" class="sexybuttonupload">Upload</button>
+        </div>
+    </form>
+</div>
+		<!-- POPUPFADE ** FADEDBLACKSPACE -->
+	<a href = "javascript:void(0)" onclick = "document.getElementById('light-uploads').style.display='none';document.getElementById('fade-uploads').style.display='none'"><div id="fade-uploads" class="black_overlay"></div></a>
+
+</body>
+<script>
+		
+		//http://stackoverflow.com/questions/21398731/jquery-ajax-upload-image-and-save-to-folder
+		// $( document ).ready(function() {
+
+		//    function readURL(input, target) {
+		//         if (input.files && input.files[0]) {
+		//             var reader = new FileReader();
+		//             var image_target = $(target);
+		//             reader.onload = function (e) {
+		//                 image_target.attr('src', e.target.result).show();
+		//             };
+		//             reader.readAsDataURL(input.files[0]);
+		//          }
+		//      }
+
+		//     $("#fileToUpload").live("change",function(){
+		//         readURL(this, "#preview_image")
+		//     });
+		// });
+		
+		function activateCamera () {
+			// Grab elements, create settings, etc.
+			var canvas = document.getElementById("canvas"),
+				context = canvas.getContext("2d"),
+				video = document.getElementById("video"),
+				videoObj = { "video": true },
+				errBack = function(error) {
+					console.log("Video capture error: ", error.code); 
+				};
+
+			// Put video listeners into place
+			if(navigator.getUserMedia) { // Standard
+				navigator.getUserMedia(videoObj, function(stream) {
+					video.src = stream;
+					video.play();
+				}, errBack);
+			} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+				navigator.webkitGetUserMedia(videoObj, function(stream){
+					video.src = window.webkitURL.createObjectURL(stream);
+					video.play();
+				}, errBack);
+			} else if(navigator.mozGetUserMedia) { // WebKit-prefixed
+				navigator.mozGetUserMedia(videoObj, function(stream){
+					video.src = window.URL.createObjectURL(stream);
+					video.play();
+				}, errBack);
+			}
+
+			// Trigger photo take
+			document.getElementById("snap").addEventListener("click", function() {
+				context.drawImage(video, 0, 0, 400, 300);
+			});
+		}
+	
+
+
+	</script>
+</html>

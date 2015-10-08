@@ -1,0 +1,15 @@
+.upvote{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+  text-transform: uppercase;
+  color: #f0f0f0;
+  font-size: 12px;
+  display: block;
+  height:40px; 
+  position:relative; 
+  margin: -20px -50px; 
+  width:100px; 
+  top:75%; 
+  left:50%;
+  background-color: #333333;
+}
