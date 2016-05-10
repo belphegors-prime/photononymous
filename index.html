@@ -45,6 +45,7 @@
 	<div class="banner-container">
 	<div id="map-canvas"></div>
 	</div>
+	//GOOGLE MAPS COMPONENT
 	<script src="js/modernizr.geoloc.js"></script>
 	<script src="js/geoPosition.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMEZPPtfEQIaBEwAcZr1VR7qwtN7pFkKk"></script>
@@ -122,7 +123,8 @@
 	</div>
 	    <script type="text/jsx">
   
-
+//REACT COMPONENT
+  //Class which stores path to uploaded image
   var ImgPost = React.createClass({
     render: function(){
       return (
@@ -132,7 +134,7 @@
         );
     }
   });
-  
+  //class shows post rating (upvotes - downvotes)
   var VoteBox = React.createClass({
     render: function(){
       return(
@@ -141,7 +143,7 @@
     }
   });
 
-
+//class for the upvote functionality
   var Upvote = React.createClass({
     getInitialState: function(){
       return {votes: this.props.votes};
@@ -150,7 +152,7 @@
       e.preventDefault();
       this.setState({votes: this.state.votes + 1});
       var id = this.props.id;
-     $.post('upvote.php', {id: id});
+     $.post('upvote.php', {id: id}); //invokes upvote php script, sends image post's id
     },
     render: function() {
       return (
@@ -163,7 +165,7 @@
     }
   }); 
 
-
+//same as upvote but decrements vote point
   var Downvote = React.createClass({
     getInitialState: function(){
       return {votes: this.props.votes};
@@ -185,7 +187,7 @@
     }
   });
 
-
+//conglomerate of all previous classes
   var Post = React.createClass({    
     render: function(){
         return(
@@ -201,7 +203,7 @@
     });
 
 
-  //  LIL LOVELY BIT THAT PUTS THE WHOLE SHEBANG TOGETHER
+  //creates stream of posts
   var PostStream = React.createClass({
     getInitialState: function(){
       return {posts: []};
@@ -268,6 +270,7 @@
 
 		<!-- POPUPFADE ** WHITESPACE -->
 	<div id="light-uploads" class="white_content_uploads">
+	<!--UPLOAD COMPONENT -->
     <form <form action="upload/upload.php" method="post" enctype="multipart/form-data" class="feedback-form-1">
         
             <div class="input-file-row-1">
